@@ -166,115 +166,15 @@
 
         
         <a href="/2020/02/20/%E4%BB%8E%E9%9B%B6%E5%B0%86hexo%E9%83%A8%E7%BD%B2%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/" class="archive-article-date">
-  	<time datetime="2020-02-20T03:53:13.642Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-20</time>
+  	<time datetime="2020-02-20T04:01:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="从零将hexo部署到云服务器上"><a href="#从零将hexo部署到云服务器上" class="headerlink" title="从零将hexo部署到云服务器上"></a>从零将hexo部署到云服务器上</h1><h3 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h3><p><strong>因为最近的阿里云的学生计划，获得了一台云主机，所以开始学习搭建博客，网上找了许多教程发现hexo比较方便和简单便用它作为博客的框架。搭建完成了所以来给自己的过程做一个总结，本教程可以将博客部署到云主机也可以部署在github上。</strong></p>
-<p>关于服务器的购买这里不赘述，阿里云、腾讯云或者其他云服务器提供商都是可以的。要部署到云主机上的话最好有域名，如果没有就只能用IP进行访问。域名的获取这里也不赘述，可以上交易网站上购买或者注册，域名的注册需要备案和审核，会花费一些时间，想快点的用国外的域名也可以。</p>
-<h3 id="二、关于云服务器上的操作"><a href="#二、关于云服务器上的操作" class="headerlink" title="二、关于云服务器上的操作"></a>二、关于云服务器上的操作</h3><h4 id="1-首先需要在云服务器管理控制台配置安全组（非常重要非常重要非常重要）"><a href="#1-首先需要在云服务器管理控制台配置安全组（非常重要非常重要非常重要）" class="headerlink" title="1.首先需要在云服务器管理控制台配置安全组（非常重要非常重要非常重要）"></a>1.首先需要在云服务器管理控制台配置安全组（<strong>非常重要非常重要非常重要</strong>）</h4><p>阿里云是默认不打开80端口的访问的，所以需要手动添加规则，</p>
-<p>打开阿里云服务器管理控制台-&gt;点击左侧安全组-&gt;点击右侧的配置规则-&gt;点击添加安全组规则</p>
-<p>结果如下图所示</p>
-<p><img src="/.com//20200220102046.png" alt="20200220102046"></p>
-<p><strong>如果不设置就无法访问博客</strong></p>
-<h4 id="2-配置服务器环境"><a href="#2-配置服务器环境" class="headerlink" title="2.配置服务器环境"></a>2.配置服务器环境</h4><p>​        <strong>1.搭建服务器的环境</strong></p>
-<p>​            需要用到nginx作为我们的web服务器，所以首先要安装nginx，可以用yum源直接安装，</p>
-<p>​            PS：如果在创建云主机的时候是从镜像市场选择的镜像可能会出现找不到nginx的包，需要特别注意，公共镜像没有这个问题。</p>
-<p>​            yum源安装命令如下：</p>
-<p>​            <code>yum install -y nginx</code></p>
-<p>​            启动nginx：</p>
-<p>​            <code>systemctl start nginx</code></p>
-<p>​            <code>systemctl enable nginx</code></p>
-<p>​            /etc/nginx 是nginx默认的配置路径</p>
-<p>​        <strong>2.配置nginx</strong></p>
-<p>​            在/etc/nginx这个文件夹中可以看到nginx.conf这个文件就是nginx的配置文件</p>
-<p>​            在这个文件中找到以下内容</p>
-<p>​            <code>include /etc/nginx/conf.d/*.conf;</code></p>
-<p>​            <code>server {</code><br>​                    <code>listen       80 default_server;</code><br>​                    <code>listen       [::]:80 default_server;</code><br>​                    <code>server_name  _;</code><br>​                   <code>#root         /usr/share/nginx/html;</code><strong>注释掉这一行，添加下面一行</strong><br>​                    <code>root         /home/www/website;</code></p>
-<p>​            保存退出。纯小白PS：命令模式下的ZZ,或者末行模式:wq都可以</p>
-<p>​            然后创建一个目录作为博客的目录，在上面设置的这个路径下创建文件夹<br>​            <code>cd /home</code><br>​            <code>mkdir www</code><br>​            <code>cd /www</code><br>​            <code>mkdir website</code></p>
-<p>​            这样就在/home/www/website创建了一个文件夹作为博客的文件夹了</p>
-<p>​            记得给予文件夹权限</p>
-<p>​            <code>chmod 777 /home/www/website</code></p>
-<p>​        <strong>3.安装Git和Node.js</strong></p>
-<p>​            1.安装Node.js</p>
-<p>​                安装方式有许多，这里说最简单的一种，使用yum源安装</p>
-<p>​                <code>yum install -y nodejs</code></p>
-<p>​                执行完成以后，输入node -v和npm -v 如果能显示版本号则安装成功<br>​                [root@localhost]# node -v<br>​                v6.17.1<br>​                [root@localhost]# npm -v<br>​                3.10.10</p>
-<p>​            2.安装Git及配置仓库</p>
-<p>​                这一步主要是为了让我们本地电脑可以通过ssh连接到云服务器，然后我们可以通过命令行的形式将博客上传到云服务器上操作如下：</p>
-<p>​                安装Git同样的使用yum源进行安装，命令如下</p>
-<p>​                <code>yum install -y git</code></p>
-<p>​                创建一个git用户，命令如下：</p>
-<p>​                <code>useradd git</code></p>
-<p>​                修改用户的权限，命令如下：</p>
-<p>​                <code>chmod 740 /etc/sudoers</code></p>
-<p>​                <code>vi /etc/sudoers</code></p>
-<p>​                在文件中的 root    ALL=(ALL)    ALL下面添加</p>
-<p>​                <code>git ALL=(ALL) ALL</code></p>
-<p>​                如图所示</p>
-<p>​                <img src="/.com//20200220111405.png" alt="20200220111405"></p>
-<p>​                保存退出以后将sudoers文件权限改为原样</p>
-<p>​                <code>chmod 400 /etc/sudoers</code></p>
-<p>​                设置git用户的密码</p>
-<p>​                <code>su passwd git</code></p>
-<p>​                切换到git用户，在~目录下创建.ssh文件夹</p>
-<p>​                <code>su git</code></p>
-<p>​                <code>cd ~</code></p>
-<p>​                <code>mkdir .ssh</code></p>
-<p>​                <code>cd .ssh</code></p>
-<p>​                生成公密钥文件，为了做到不用密码登录云服务器</p>
-<p>​                <code>ssh-keygen</code></p>
-<p>​                然后一直按回车，出现一个图案就是好了</p>
-<p>​                此时在目录下会有两个文件，分别是</p>
-<p>​                id_rsa 和 id_rsa.pub</p>
-<p>​                将id_rsa这个私钥文件复制一份到本地电脑的以下位置，否则还是需要密码才能登录</p>
-<p>​                C:\Users\用户名\ .ssh</p>
-<p>​                在本地电脑打开CMD，用ssh的方式连接云服务器</p>
-<p>​                <img src="/.com//20200220112433.png" alt="20200220112433"></p>
-<p>​                有如下提示则是登录成功</p>
-<p>​                <strong>Welcome to Alibaba Cloud Elastic Compute Service !</strong></p>
-<p>​                现在创建一个git的仓库，在本地电脑的CMD上出现上面提示以后再进行此操作，</p>
-<p>​                <strong>在本地电脑上CMD进行此操作！！！！！</strong></p>
-<p>​                <code>cd ~</code><br>​                <code>git init --bare blog.git</code></p>
-<p>​                此时服务器端的基本设置就完成了。</p>
-<h3 id="三、关于本地电脑的操作"><a href="#三、关于本地电脑的操作" class="headerlink" title="三、关于本地电脑的操作"></a>三、关于本地电脑的操作</h3><p>​    <strong>1.安装Node.js</strong></p>
-<p>​        下载地址：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js</a></p>
-<p>​        安装过程一直下一步即可。</p>
-<p>​        安装完成以后用CMD查看是否安装成功<br>​        <code>node -v</code><br>​        v6.17.1<br>​        <code>npm -v</code><br>​        3.10.10</p>
-<p>​        有版本号说明安装成功了</p>
-<p>​    <strong>2.安装hexo</strong></p>
-<p>​        先安装cnpm，因为npm在国内的速度比较慢，换成淘宝的会快一些</p>
-<p>​        CMD输入以下命令：<br>​        <code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code></p>
-<p>​        接下来安装hexo：</p>
-<p>​        <code>cnpm install -g hexo-cli</code></p>
-<p>​        然后创建一个新的目录来初始化博客</p>
-<p>​        例如：E:/Blog</p>
-<p>​        CMD输入：</p>
-<p>​        <code>E:</code></p>
-<p>​        <code>cd Blog</code></p>
-<p>​        <code>hexo init</code></p>
-<p>​        PS：这个过程可能会异常缓慢，需要等待有条件的最好架个梯子</p>
-<p>​        执行完毕以后安装两个插件<br>​        <code>cnpm install hexo-deployer-git --save</code><br>​        <code>cnpm install hexo-server</code></p>
-<p>​        之后就可以在本机上查看自己的博客了</p>
-<p>​        <code>hexo g</code></p>
-<p>​        <code>hexo s</code></p>
-<p>​        打开浏览器访问<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a></p>
-<p>​    <strong>3.配置_config.yml完成服务器的部署</strong></p>
-<p>​        在刚才生成的hexo的目录下，找到_config.yml，记事本打开它。</p>
-<p>​        在末尾找到deploy，做如下配置：<br>​        <code>deploy:</code><br>​        <code>type: git</code><br>​        <code>repo: git@这里改为服务器公网IP:/home/git/blog.git</code><br>​        <code>branch: master</code><br>​        <code>message:</code>   </p>
-<p>​        保存退出</p>
-<p>​        然后输入以下命令将本地博客上传到云服务器</p>
-<p>​        <code>hexo clean &amp;&amp; hexo generate --deploy</code></p>
-<p>​        在<strong>云服务器</strong>上输入如下命令：</p>
-<p>​        <code>git --work-tree=/home/www/website --git-dir=/home/git/blog.git checkout -f</code></p>
-<p>​        <code>nginx -s reload</code></p>
-<h3 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h3><p>现在就已经完成部署了，可以去找喜欢的主题进行更换然后开始发文了，下一篇讲解更换主题和自定义主题。</p>
-<p>现在输入公网IP就可以访问博客了。</p>
-
+        <h3 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h3><p><strong>因为最近的阿里云的学生计划，获得了一台云主机，所以开始学习搭建博客，网上找了许多教程发现hexo比较方便和简单便用它作为博客的框架。搭建完成了所以来给自己的过程做一个总结，本教程可以将博客部署到云主机也可以部署在github上。</strong></p>
+        
       
 
       
@@ -287,69 +187,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/02/20/%E4%BB%8E%E9%9B%B6%E5%B0%86hexo%E9%83%A8%E7%BD%B2%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/19/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/19/hello-world/" class="archive-article-date">
-  	<time datetime="2020-02-19T02:50:42.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/19/hello-world/">展开全文 >></a>
         </p>
       
 
