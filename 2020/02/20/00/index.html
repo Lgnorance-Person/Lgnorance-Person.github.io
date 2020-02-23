@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/02/20/00/d.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/20/00/e.png">
 <meta property="article:published_time" content="2020-02-20T04:01:56.000Z">
-<meta property="article:modified_time" content="2020-02-21T04:07:01.873Z">
+<meta property="article:modified_time" content="2020-02-21T12:15:45.948Z">
 <meta property="article:author" content="GuoHui Chen">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/02/20/00/a.jpg">
@@ -88,14 +88,6 @@
 				
 					<a class="github" target="_blank" href="https://github.com/Lgnorance-Person" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="https://weibo.com/7211737717" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="qq" target="_blank" href="/523619480" title="qq"><i class="icon-qq"></i></a>
-		        
-					<a class="bilibili" target="_blank" href="https://space.bilibili.com/508906268" title="bilibili"><i class="icon-bilibili"></i></a>
-		        
-					<a class="mail" target="_blank" href="/523619480@qq.com" title="mail"><i class="icon-mail"></i></a>
-		        
 			</div>
 		</nav>
 	</header>		
@@ -132,14 +124,6 @@
 				<div class="social">
 					
 						<a class="github" target="_blank" href="https://github.com/Lgnorance-Person" title="github"><i class="icon-github"></i></a>
-			        
-						<a class="weibo" target="_blank" href="https://weibo.com/7211737717" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="qq" target="_blank" href="/523619480" title="qq"><i class="icon-qq"></i></a>
-			        
-						<a class="bilibili" target="_blank" href="https://space.bilibili.com/508906268" title="bilibili"><i class="icon-bilibili"></i></a>
-			        
-						<a class="mail" target="_blank" href="/523619480@qq.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -264,7 +248,8 @@ git init --bare blog.git</code></pre><p>　　　　　此时服务器端的基�
 <p>　　　　有版本号说明安装成功了</p>
 <p>　　　<strong>2.安装hexo</strong></p>
 <p>　　　　先安装cnpm，因为npm在国内的速度比较慢，换成淘宝的会快一些</p>
-<p>　　　　CMD输入以下命令：<br>        npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a></p>
+<p>　　　　CMD输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　　　　npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
 <p>　　　　接下来安装hexo：</p>
 <pre><code>cnpm install -g hexo-cli</code></pre><p>　　　　然后创建一个新的目录来初始化博客，</p>
 <p>　　　　例如：E:/Blog</p>
@@ -274,14 +259,17 @@ git init --bare blog.git</code></pre><p>　　　　　此时服务器端的基�
 cd Blog
 
 hexo init</code></pre><p>　　　　<font color="red">PS：这个过程可能会异常缓慢，需要等待，有条件的最好架个梯子</font></p>
-<p>　　　　执行完毕以后安装两个插件,不安装第一个会在上传的时候报错，第二个会导致无法在本地创建博客<br>        cnpm install hexo-deployer-git –save<br>        cnpm install hexo-server</p>
+<p>　　　　执行完毕以后安装两个插件,不安装第一个会在上传的时候报错，第二个会导致无法在本地创建博客</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cnpm install hexo-deployer-git --save</span><br><span class="line">cnpm install hexo-server</span><br></pre></td></tr></table></figure>
+
 <p>　　　　之后就可以在本机上查看自己的博客了</p>
 <pre><code>hexo g
 
 hexo s</code></pre><p>　　　　打开浏览器访问<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a></p>
 <p>　　　<strong>3.配置_config.yml完成服务器的部署</strong></p>
 <p>　　　　在刚才生成的hexo的目录下，找到_config.yml，记事本打开它。</p>
-<p>　　　　在末尾找到deploy，做如下配置：<br>                deploy:<br>                type: git<br>                repo: git@这里改为服务器公网IP:/home/git/blog.git`<br>                branch: master<br>                message:</p>
+<p>　　　　在末尾找到deploy，做如下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repo: git@这里改为服务器公网IP:&#x2F;home&#x2F;git&#x2F;blog.git&#96;       </span><br><span class="line">branch: master                         </span><br><span class="line">message:</span><br></pre></td></tr></table></figure>
 <p>　　　　保存退出</p>
 <p>　　　　然后输入以下命令将本地博客上传到云服务器</p>
 <pre><code>hexo clean &amp;&amp; hexo generate --deploy</code></pre><p>　　　　在<strong>云服务器</strong>上输入如下命令：</p>
