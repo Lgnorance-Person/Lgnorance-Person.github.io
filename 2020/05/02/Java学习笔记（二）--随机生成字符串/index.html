@@ -8,14 +8,14 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Java学习笔记（二）--随机生成字符串 | Lgnorance Person</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="如何随机生成长度自定的字符串">
+  <meta name="description" content="如何随机生成长度自定包含某一类型字符的字符串12345678StringBuffer sb&#x3D;new StringBuffer();int length&#x3D;10;for(int i&#x3D;0;i&lt;length;i++)&amp;#123;    int result;    result&#x3D;(int)Math.round(Math.random()*25+65);	sb.append((char) resu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java学习笔记（二）--随机生成字符串">
 <meta property="og:url" content="http://yoursite.com/2020/05/02/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89--%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
 <meta property="og:site_name" content="Lgnorance Person">
-<meta property="og:description" content="如何随机生成长度自定的字符串">
+<meta property="og:description" content="如何随机生成长度自定包含某一类型字符的字符串12345678StringBuffer sb&#x3D;new StringBuffer();int length&#x3D;10;for(int i&#x3D;0;i&lt;length;i++)&amp;#123;    int result;    result&#x3D;(int)Math.round(Math.random()*25+65);	sb.append((char) resu">
 <meta property="article:published_time" content="2020-05-02T04:24:02.000Z">
-<meta property="article:modified_time" content="2020-05-02T05:18:38.280Z">
+<meta property="article:modified_time" content="2020-05-02T05:30:49.114Z">
 <meta property="article:author" content="GuoHui Chen">
 <meta name="twitter:card" content="summary">
   
@@ -163,7 +163,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="如何随机生成长度自定的字符串"><a href="#如何随机生成长度自定的字符串" class="headerlink" title="如何随机生成长度自定的字符串"></a>如何随机生成长度自定的字符串</h3><a id="more"></a>
+        <a id="more"></a>
 
 <h3 id="如何随机生成长度自定包含某一类型字符的字符串"><a href="#如何随机生成长度自定包含某一类型字符的字符串" class="headerlink" title="如何随机生成长度自定包含某一类型字符的字符串"></a>如何随机生成长度自定包含某一类型字符的字符串</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer sb=<span class="keyword">new</span> StringBuffer();</span><br><span class="line"><span class="keyword">int</span> length=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">    <span class="keyword">int</span> result;</span><br><span class="line">    result=(<span class="keyword">int</span>)Math.round(Math.random()*<span class="number">25</span>+<span class="number">65</span>);</span><br><span class="line">	sb.append((<span class="keyword">char</span>) result);</span><br><span class="line">&#125;</span><br><span class="line">String str = sb.toString();</span><br></pre></td></tr></table></figure>
 <p><strong>Math类位于java.lang包下，是数学相关的工具类</strong><br><strong>Math.round()方法的功能是四舍五入</strong><br><strong>Math.random()生成一个0-1之间的double类型的值</strong><br><strong>数字的作用：一个是需要生成的某类字符的范围，一个是需要生成的某类字符位于ASCII码表的起始位置</strong></p>
