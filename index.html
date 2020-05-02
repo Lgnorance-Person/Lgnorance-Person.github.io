@@ -150,7 +150,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/02/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89--%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2/">Java学习笔记（二）--随机生成字符串</a>
+      <a class="article-title" href="/2020/05/02/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89--%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2/">Java学习笔记（二）</a>
     </h1>
   
 
@@ -163,23 +163,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-
-<h3 id="如何随机生成长度自定包含某一类型字符的字符串"><a href="#如何随机生成长度自定包含某一类型字符的字符串" class="headerlink" title="如何随机生成长度自定包含某一类型字符的字符串"></a>如何随机生成长度自定包含某一类型字符的字符串</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer sb=<span class="keyword">new</span> StringBuffer();</span><br><span class="line"><span class="keyword">int</span> length=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">    <span class="keyword">int</span> result;</span><br><span class="line">    result=(<span class="keyword">int</span>)Math.round(Math.random()*<span class="number">25</span>+<span class="number">65</span>);</span><br><span class="line">	sb.append((<span class="keyword">char</span>) result);</span><br><span class="line">&#125;</span><br><span class="line">String str = sb.toString();</span><br></pre></td></tr></table></figure>
-<p><strong>Math类位于java.lang包下，是数学相关的工具类</strong><br><strong>Math.round()方法的功能是四舍五入</strong><br><strong>Math.random()生成一个0-1之间的double类型的值</strong><br><strong>数字的作用：一个是需要生成的某类字符的范围，一个是需要生成的某类字符位于ASCII码表的起始位置</strong></p>
-<h4 id="另一种格式"><a href="#另一种格式" class="headerlink" title="另一种格式"></a>另一种格式</h4><p><strong>不用Math.random(),而是用Random.nextInt来实现</strong></p>
-<p><strong>但是如果用Random来进行操作则需要创建一个Random对象，</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> result;</span><br><span class="line"><span class="keyword">int</span> number=<span class="keyword">new</span> Random().nextInt(<span class="number">24</span>) + <span class="number">1</span>;</span><br><span class="line">result=Math.round(number+<span class="number">65</span>);</span><br><span class="line">sb.append((<span class="keyword">char</span>) result);;</span><br></pre></td></tr></table></figure>
-
-<h3 id="如何随机生成长度自定的一个包含大小写字母和数字的字符串"><a href="#如何随机生成长度自定的一个包含大小写字母和数字的字符串" class="headerlink" title="如何随机生成长度自定的一个包含大小写字母和数字的字符串"></a>如何随机生成长度自定的一个包含大小写字母和数字的字符串</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getRandomString</span><span class="params">(<span class="keyword">int</span> length)</span></span>&#123;</span><br><span class="line">    Random random=<span class="keyword">new</span> Random();</span><br><span class="line">    StringBuffer sb=<span class="keyword">new</span> StringBuffer();</span><br></pre></td></tr></table></figure>
-<p><strong>首先创建两个对象，一个Random用于随机数的生成，一个StringBuffer用于存放生成的字符</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">    <span class="keyword">int</span> number=random.nextInt(<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
-<p><strong>number的作用为区分生成的类型是是什么，大写、小写和数字</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">switch</span>(number)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">        result=(<span class="keyword">int</span>)Math.round(Math.random()*<span class="number">25</span>+<span class="number">65</span>);</span><br><span class="line">        sb.append((<span class="keyword">char</span>) result);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">        result=(<span class="keyword">int</span>)Math.round(Math.random()*<span class="number">25</span>+<span class="number">97</span>);</span><br><span class="line">        sb.append((<span class="keyword">char</span>) result);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">        sb.append(random.nextInt(<span class="number">10</span>));</span><br><span class="line">        <span class="keyword">break</span>;</span><br></pre></td></tr></table></figure>
-<p><strong>数字的不需要麻烦直接使用Random类下的nextInt方法随机生成一个0-9的值即可。</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sb.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>最后，返回一个字符串给调用处。即可完成随机字符串产生</strong></p>
-
+        <p><strong>随机生成字符串</strong></p>
+        
       
 
       
@@ -291,7 +276,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/29/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89--%E8%A3%85%E7%AE%B1%E4%B8%8E%E6%8B%86%E7%AE%B1/">Java学习笔记（一）--自动装箱与拆箱</a>
+      <a class="article-title" href="/2020/04/29/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89--%E8%A3%85%E7%AE%B1%E4%B8%8E%E6%8B%86%E7%AE%B1/">Java学习笔记（一）</a>
     </h1>
   
 
@@ -304,14 +289,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一、什么是自动装箱拆箱"><a href="#一、什么是自动装箱拆箱" class="headerlink" title="一、什么是自动装箱拆箱"></a>一、什么是自动装箱拆箱</h3><p><strong>下面两句代码就可以看到装箱和拆箱过程</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//自动装箱</span></span><br><span class="line">Integer total = <span class="number">99</span>;</span><br><span class="line"> <span class="comment">//自动拆箱</span></span><br><span class="line"><span class="keyword">int</span> totalprim = total;</span><br></pre></td></tr></table></figure>
-
-<p><strong>装箱就是自动将基本数据类型转换为包装器类型；拆箱就是自动将包装器类型转换为基本数据类型</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">基本类型        包装类（引用类型，包装类都位于java.lang包下）</span><br><span class="line"><span class="keyword">byte</span>  （<span class="number">1</span>字节）  Byte</span><br><span class="line"><span class="keyword">short</span> （<span class="number">2</span>字节）  Short</span><br><span class="line"><span class="keyword">int</span>   （<span class="number">4</span>字节）  Integer     【特殊】</span><br><span class="line"><span class="keyword">long</span>  （<span class="number">8</span>字节）  Long</span><br><span class="line"><span class="keyword">float</span> （<span class="number">4</span>字节）  Float</span><br><span class="line"><span class="keyword">double</span>（<span class="number">8</span>字节）  Double</span><br><span class="line"><span class="keyword">char</span>  （<span class="number">2</span>字节）  Character   【特殊】</span><br><span class="line"><span class="keyword">boolean</span> （未定） Boolean</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/04/29/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89--%E8%A3%85%E7%AE%B1%E4%B8%8E%E6%8B%86%E7%AE%B1/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200501122626.png" alt></p>
-
+        <p><strong>自动装箱与拆箱</strong></p>
+        
       
 
       
