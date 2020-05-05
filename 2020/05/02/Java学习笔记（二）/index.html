@@ -6,20 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java学习笔记（一） | Lgnorance Person</title>
+  <title>Java学习笔记（二） | Lgnorance Person</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="自动装箱与拆箱">
+  <meta name="description" content="随机生成字符串">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java学习笔记（一）">
-<meta property="og:url" content="http://yoursite.com/2020/04/29/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89--%E8%A3%85%E7%AE%B1%E4%B8%8E%E6%8B%86%E7%AE%B1/index.html">
+<meta property="og:title" content="Java学习笔记（二）">
+<meta property="og:url" content="http://yoursite.com/2020/05/02/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
 <meta property="og:site_name" content="Lgnorance Person">
-<meta property="og:description" content="自动装箱与拆箱">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89--%E8%A3%85%E7%AE%B1%E4%B8%8E%E6%8B%86%E7%AE%B1/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200501122626.png">
-<meta property="article:published_time" content="2020-04-29T02:40:38.000Z">
-<meta property="article:modified_time" content="2020-05-02T05:35:10.176Z">
-<meta property="article:author" content="GuoHui Chen">
+<meta property="og:description" content="随机生成字符串">
+<meta property="article:published_time" content="2020-05-02T04:24:02.000Z">
+<meta property="article:modified_time" content="2020-05-02T05:35:15.415Z">
+<meta property="article:author" content="GH Chen">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/04/29/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89--%E8%A3%85%E7%AE%B1%E4%B8%8E%E6%8B%86%E7%AE%B1/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200501122626.png">
   
     <link rel="alternative" href="/atom.xml" title="Lgnorance Person" type="application/atom+xml">
   
@@ -51,7 +49,7 @@
 			<img src="/img/123.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">GuoHui Chen</a></h1>
+		  <h1 class="header-author"><a href="/">GH Chen</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">世界上只有一种英雄主义就是在认清现实之后还依然热爱它</p>
@@ -103,7 +101,7 @@
 				<img src="/img/123.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">GuoHui Chen</h1>
+			  <h1 class="header-author js-header-author">GH Chen</h1>
 			</hgroup>
 			
 			<p class="header-subtitle"><i class="icon icon-quo-left"></i>世界上只有一种英雄主义就是在认清现实之后还依然热爱它<i class="icon icon-quo-right"></i></p>
@@ -145,36 +143,43 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java学习笔记（一）--装箱与拆箱" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java学习笔记（二）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Java学习笔记（一）
+      Java学习笔记（二）
     </h1>
   
 
         
-        <a href="/2020/04/29/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89--%E8%A3%85%E7%AE%B1%E4%B8%8E%E6%8B%86%E7%AE%B1/" class="archive-article-date">
-  	<time datetime="2020-04-29T02:40:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
+        <a href="/2020/05/02/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-05-02T04:24:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>自动装箱与拆箱</strong></p>
+        <p><strong>随机生成字符串</strong></p>
 <a id="more"></a>
 
-<h3 id="一、什么是自动装箱拆箱"><a href="#一、什么是自动装箱拆箱" class="headerlink" title="一、什么是自动装箱拆箱"></a>一、什么是自动装箱拆箱</h3><p><strong>下面两句代码就可以看到装箱和拆箱过程</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//自动装箱</span></span><br><span class="line">Integer total = <span class="number">99</span>;</span><br><span class="line"> <span class="comment">//自动拆箱</span></span><br><span class="line"><span class="keyword">int</span> totalprim = total;</span><br></pre></td></tr></table></figure>
+<h3 id="如何随机生成长度自定包含某一类型字符的字符串"><a href="#如何随机生成长度自定包含某一类型字符的字符串" class="headerlink" title="如何随机生成长度自定包含某一类型字符的字符串"></a>如何随机生成长度自定包含某一类型字符的字符串</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer sb=<span class="keyword">new</span> StringBuffer();</span><br><span class="line"><span class="keyword">int</span> length=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">    <span class="keyword">int</span> result;</span><br><span class="line">    result=(<span class="keyword">int</span>)Math.round(Math.random()*<span class="number">25</span>+<span class="number">65</span>);</span><br><span class="line">	sb.append((<span class="keyword">char</span>) result);</span><br><span class="line">&#125;</span><br><span class="line">String str = sb.toString();</span><br></pre></td></tr></table></figure>
+<p><strong>Math类位于java.lang包下，是数学相关的工具类</strong><br><strong>Math.round()方法的功能是四舍五入</strong><br><strong>Math.random()生成一个0-1之间的double类型的值</strong><br><strong>数字的作用：一个是需要生成的某类字符的范围，一个是需要生成的某类字符位于ASCII码表的起始位置</strong></p>
+<h4 id="另一种格式"><a href="#另一种格式" class="headerlink" title="另一种格式"></a>另一种格式</h4><p><strong>不用Math.random(),而是用Random.nextInt来实现</strong></p>
+<p><strong>但是如果用Random来进行操作则需要创建一个Random对象，</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> result;</span><br><span class="line"><span class="keyword">int</span> number=<span class="keyword">new</span> Random().nextInt(<span class="number">24</span>) + <span class="number">1</span>;</span><br><span class="line">result=Math.round(number+<span class="number">65</span>);</span><br><span class="line">sb.append((<span class="keyword">char</span>) result);;</span><br></pre></td></tr></table></figure>
 
-<p><strong>装箱就是自动将基本数据类型转换为包装器类型；拆箱就是自动将包装器类型转换为基本数据类型</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">基本类型        包装类（引用类型，包装类都位于java.lang包下）</span><br><span class="line"><span class="keyword">byte</span>  （<span class="number">1</span>字节）  Byte</span><br><span class="line"><span class="keyword">short</span> （<span class="number">2</span>字节）  Short</span><br><span class="line"><span class="keyword">int</span>   （<span class="number">4</span>字节）  Integer     【特殊】</span><br><span class="line"><span class="keyword">long</span>  （<span class="number">8</span>字节）  Long</span><br><span class="line"><span class="keyword">float</span> （<span class="number">4</span>字节）  Float</span><br><span class="line"><span class="keyword">double</span>（<span class="number">8</span>字节）  Double</span><br><span class="line"><span class="keyword">char</span>  （<span class="number">2</span>字节）  Character   【特殊】</span><br><span class="line"><span class="keyword">boolean</span> （未定） Boolean</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/04/29/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89--%E8%A3%85%E7%AE%B1%E4%B8%8E%E6%8B%86%E7%AE%B1/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200501122626.png" alt></p>
+<h3 id="如何随机生成长度自定的一个包含大小写字母和数字的字符串"><a href="#如何随机生成长度自定的一个包含大小写字母和数字的字符串" class="headerlink" title="如何随机生成长度自定的一个包含大小写字母和数字的字符串"></a>如何随机生成长度自定的一个包含大小写字母和数字的字符串</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getRandomString</span><span class="params">(<span class="keyword">int</span> length)</span></span>&#123;</span><br><span class="line">    Random random=<span class="keyword">new</span> Random();</span><br><span class="line">    StringBuffer sb=<span class="keyword">new</span> StringBuffer();</span><br></pre></td></tr></table></figure>
+<p><strong>首先创建两个对象，一个Random用于随机数的生成，一个StringBuffer用于存放生成的字符</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">    <span class="keyword">int</span> number=random.nextInt(<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>number的作用为区分生成的类型是是什么，大写、小写和数字</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">switch</span>(number)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">        result=(<span class="keyword">int</span>)Math.round(Math.random()*<span class="number">25</span>+<span class="number">65</span>);</span><br><span class="line">        sb.append((<span class="keyword">char</span>) result);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">        result=(<span class="keyword">int</span>)Math.round(Math.random()*<span class="number">25</span>+<span class="number">97</span>);</span><br><span class="line">        sb.append((<span class="keyword">char</span>) result);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">        sb.append(random.nextInt(<span class="number">10</span>));</span><br><span class="line">        <span class="keyword">break</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>数字的不需要麻烦直接使用Random类下的nextInt方法随机生成一个0-9的值即可。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sb.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>最后，返回一个字符串给调用处。即可完成随机字符串产生</strong></p>
 
       
 
@@ -233,7 +238,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/29/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89--%E8%A3%85%E7%AE%B1%E4%B8%8E%E6%8B%86%E7%AE%B1/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/02/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -247,18 +252,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/01/Java%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/05/04/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java学习日记（二）
+          Java学习笔记（三）--发红包
         
       </div>
     </a>
   
   
-    <a href="/2020/04/29/%E6%90%AD%E5%BB%BAJava%E6%BA%90%E7%A0%81%E7%9A%84%E9%98%85%E8%AF%BB%E7%8E%AF%E5%A2%83/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">搭建Java源码的阅读环境</div>
+    <a href="/2020/05/01/Java%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java学习日记（二）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -301,7 +306,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 GuoHui Chen
+    		&copy; 2020 GH Chen
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
