@@ -6,16 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | Wonderland</title>
+  <title>Java学习日记（四） | Wonderland</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="世界上只有一种英雄主义就是在认清现实之后还依然热爱它I love this world">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wonderland">
-<meta property="og:url" content="http://yoursite.com/archives/2020/page/2/index.html">
+  <meta name="description" content="记录Java学习过程中解决的问题。【连接数据库的基本操作】">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java学习日记（四）">
+<meta property="og:url" content="http://yoursite.com/2020/05/18/JavaStudydiary4/index.html">
 <meta property="og:site_name" content="Wonderland">
-<meta property="og:description" content="世界上只有一种英雄主义就是在认清现实之后还依然热爱它I love this world">
+<meta property="og:description" content="记录Java学习过程中解决的问题。【连接数据库的基本操作】">
+<meta property="og:image" content="http://yoursite.com/2020/05/18/JavaStudydiary4/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200518234450.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/18/JavaStudydiary4/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200518232420.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/18/JavaStudydiary4/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200518234851.png">
+<meta property="article:published_time" content="2020-05-18T14:57:00.000Z">
+<meta property="article:modified_time" content="2020-05-18T15:50:13.278Z">
 <meta property="article:author" content="GH Chen">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/18/JavaStudydiary4/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200518234450.png">
   
     <link rel="alternative" href="/atom.xml" title="Wonderland" type="application/atom+xml">
   
@@ -141,79 +147,170 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-JavaStudydiary4" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/20/01/" class="archive-article-date">
-  	<time datetime="2020-02-20T12:35:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/20/01/">更换hexo主题和自定义主题</a>
+    <h1 class="article-title" itemprop="name">
+      Java学习日记（四）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/20/00/" class="archive-article-date">
-  	<time datetime="2020-02-20T04:01:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-20</time>
+        
+        <a href="/2020/05/18/JavaStudydiary4/" class="archive-article-date">
+  	<time datetime="2020-05-18T14:57:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-18</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/20/00/">从零将hexo部署到云服务器上</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>记录Java学习过程中解决的问题。【连接数据库的基本操作】</strong></p>
+<a id="more"></a>
 
-        <div class="article-info info-on-right">
-          
-          
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><strong>利用数据库可视化工具或者命令行创建一个学生数据库stu，在其中创建数据表student，表结构如下：</strong></p>
+<p><strong>sno:varchar(5),sname:varchar(4),ssex:varchar(1),sage:int(3),sdept:varchar(4)。</strong></p>
+<p><strong>编写程序用于手动输入若干记录</strong></p>
+<h3 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h3><p><strong>1.安装MySQL数据库，并设置好环境变量,这里使用的版本是8.0+的。5.0的数据库连接方法不一样</strong></p>
+<p><strong>2.数据库可视化工具</strong></p>
+<p><strong>3.IDE</strong></p>
+<h3 id="操作与解析"><a href="#操作与解析" class="headerlink" title="操作与解析"></a>操作与解析</h3><h4 id="1-创建所需的数据库，这里以CMD命令行方式进行演示"><a href="#1-创建所需的数据库，这里以CMD命令行方式进行演示" class="headerlink" title="1.创建所需的数据库，这里以CMD命令行方式进行演示,"></a><strong>1.创建所需的数据库，这里以CMD命令行方式进行演示</strong>,</h4><p><strong>安装完以后会有一个初始密码，可以自行设置成比较好记的密码，刚装好的MySQL还需要设置时区。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mysql -u username -p password &#x2F;&#x2F;登录数据库</span><br><span class="line">&gt;show variables like&#39;%time_zone&#39;; &#x2F;&#x2F;显示SYSTEM就是没有时区</span><br><span class="line">&gt;set global time_zone &#x3D; &#39;+8:00&#39;;</span><br><span class="line"></span><br><span class="line">&gt;CREATE DATABASE stu;</span><br><span class="line"></span><br><span class="line">&gt;USE stu;</span><br><span class="line"></span><br><span class="line">&gt;CREATE TABLE student(</span><br><span class="line"></span><br><span class="line">&gt;sno varchar(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,</span><br><span class="line"></span><br><span class="line">&gt;sname varchar(4) NOT NULL,</span><br><span class="line"></span><br><span class="line">&gt;ssex varchar(1) NOT NULL,</span><br><span class="line"></span><br><span class="line">&gt;sage int(3) NOT NULL,</span><br><span class="line"></span><br><span class="line">&gt;sdept varchar(4) NOT NULL);</span><br></pre></td></tr></table></figure>
 
+<h4 id="2-导入mysql类库，进行连接测试"><a href="#2-导入mysql类库，进行连接测试" class="headerlink" title="2.导入mysql类库，进行连接测试"></a>2.导入mysql类库，进行连接测试</h4><p><strong>mysql-connector-java-8.0.15-bin.jar下载地址</strong></p>
+<p>链接: <a href="https://pan.baidu.com/s/1XU69sCJAQ4bJff4QcxaM8g" target="_blank" rel="noopener">https://pan.baidu.com/s/1XU69sCJAQ4bJff4QcxaM8g</a></p>
+<p>提取码: enit</p>
+<p><strong>选择下载好的类库然后关联到main方法的包中</strong></p>
+<p><img src="/2020/05/18/JavaStudydiary4/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200518234450.png" alt></p>
+<p><strong>在IDE中也有进行数据库连接测试的工具，以IDEA为例来操作</strong></p>
+<p><img src="/2020/05/18/JavaStudydiary4/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200518232420.png" alt></p>
+<h4 id="3-连接数据库的方式"><a href="#3-连接数据库的方式" class="headerlink" title="3.连接数据库的方式"></a>3.连接数据库的方式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Statement <span class="title">connectionDB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Statement stm = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Class.forName(<span class="string">"com.mysql.cj.jdbc.Driver"</span>);    <span class="comment">//加载驱动程序,参数是驱动程序名,8.0与5.0不同</span></span><br><span class="line">        String url = <span class="string">"jdbc:mysql://localhost/db_name？characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT%2B8"</span>;<span class="comment">//编码方式，ssl连接是否开启，时区</span></span><br><span class="line">        Connection conn = DriverManager.getConnection(url, <span class="string">"username"</span>, <span class="string">"password"</span>);<span class="comment">//连接数据库</span></span><br><span class="line">        stm = conn.createStatement();<span class="comment">//statement用来执行SQL语句</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        System.out.println(<span class="string">"连接数据库错误"</span>);</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> stm;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-获取数据库内已有信息，比较方便与插入数据后进行对比"><a href="#4-获取数据库内已有信息，比较方便与插入数据后进行对比" class="headerlink" title="4.获取数据库内已有信息，比较方便与插入数据后进行对比"></a>4.获取数据库内已有信息，比较方便与插入数据后进行对比</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getTableData</span><span class="params">(String tableName, Statement stm)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        String sql = <span class="string">"select * from "</span> + tableName;</span><br><span class="line">        ResultSet rs = stm.executeQuery(sql);<span class="comment">//查询sql返回一个ResultSet类型的数据，类似一个集合</span></span><br><span class="line">        <span class="keyword">while</span> (rs.next()) &#123;</span><br><span class="line">            System.out.print(<span class="string">"学号："</span> + rs.getString(<span class="string">"sno"</span>));</span><br><span class="line">            System.out.print(<span class="string">",姓名："</span> + rs.getString(<span class="string">"sname"</span>));</span><br><span class="line">            System.out.print(<span class="string">",性别："</span> + rs.getString(<span class="string">"ssex"</span>));</span><br><span class="line">            System.out.print(<span class="string">",年龄："</span> + rs.getInt(<span class="string">"sage"</span>));</span><br><span class="line">            System.out.print(<span class="string">",系别："</span> + rs.getString(<span class="string">"sdept"</span>) + <span class="string">"\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        System.out.println(<span class="string">"获取数据错误"</span>);</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-插入语句的执行"><a href="#5-插入语句的执行" class="headerlink" title="5.插入语句的执行"></a>5.插入语句的执行</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setStudentTableData</span><span class="params">(Statement stm, String no, String name, String sex, String age, String dept)</span> </span>&#123;</span><br><span class="line">    String sql = <span class="string">"INSERT INTO stu (sno,sname,ssex,sage,sdept)VALUES("</span> </span><br><span class="line">        + <span class="string">"'"</span> + no + <span class="string">"',"</span> </span><br><span class="line">        + <span class="string">"'"</span> + name + <span class="string">"',"</span> </span><br><span class="line">        + <span class="string">"'"</span> + sex + <span class="string">"',"</span> </span><br><span class="line">        + <span class="string">"'"</span> + age + <span class="string">"',"</span> </span><br><span class="line">        + <span class="string">"'"</span> + dept + <span class="string">"')"</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        stm.execute(sql);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">        System.out.println(<span class="string">"插入语句执行错误"</span>);</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>因为sql里是不能直接存在变量的，所以不能将变量名直接写进sql语句，但是在程序设计中我们是先生成一个字符串然后在传入execute方法中的，在字符串上我们是可以直接将变量名写进去的，只要字符串的格式满足sql语句的格式即可了。我们通过连接字符串的方式将变量名拼接成sql语句的格式。</strong></p>
+<p><strong>如果只有一个列名则是如下格式</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO stu (sno)VALUES(&quot; + &quot;&#39;&quot; + no + &quot;&#39;)&quot;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO stu (sno)VALUES(‘no’);</span><br></pre></td></tr></table></figure>
+
+<p><strong>以上两个句子等效</strong></p>
+<h4 id="6-测试方法"><a href="#6-测试方法" class="headerlink" title="6.测试方法"></a>6.测试方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DataBase</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner s = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        Statement stm = connectionDB();</span><br><span class="line">        getTableData(<span class="string">"stu"</span>, stm);</span><br><span class="line">        String no, name, sex, age, dept;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"请输入学号："</span>);</span><br><span class="line">            no = s.nextLine();</span><br><span class="line">            System.out.println(<span class="string">"请输入姓名："</span>);</span><br><span class="line">            name = s.nextLine();</span><br><span class="line">            System.out.println(<span class="string">"请输入性别："</span>);</span><br><span class="line">            sex = s.nextLine();</span><br><span class="line">            System.out.println(<span class="string">"请输入年龄："</span>);</span><br><span class="line">            age = s.nextLine();</span><br><span class="line">            System.out.println(<span class="string">"请输入系别："</span>);</span><br><span class="line">            dept = s.nextLine();</span><br><span class="line">        &#125; <span class="keyword">while</span> (!dept.endsWith(<span class="string">"ok"</span>));</span><br><span class="line">        <span class="keyword">if</span> (dept.endsWith(<span class="string">"ok"</span>)) &#123;</span><br><span class="line">            dept = dept.substring(<span class="number">0</span>, dept.lastIndexOf(<span class="string">"ok"</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        setStudentTableData(stm, no, name, sex, age, dept);</span><br><span class="line">        getTableData(<span class="string">"stu"</span>, stm);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果</strong></p>
+<p><img src="/2020/05/18/JavaStudydiary4/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200518234851.png" alt></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/18/JavaStudydiary4/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/05/15/JavaStudydiary3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java学习日记（三）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
   
 
 
@@ -237,8 +334,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
