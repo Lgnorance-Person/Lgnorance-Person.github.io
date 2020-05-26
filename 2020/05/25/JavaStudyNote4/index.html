@@ -16,7 +16,7 @@
 <meta property="og:description" content="在nextInt后使用nextLine出现的读取为空字符串的问题">
 <meta property="og:image" content="http://yoursite.com/2020/05/25/JavaStudyNote4/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200525141956.png">
 <meta property="article:published_time" content="2020-05-25T06:06:45.000Z">
-<meta property="article:modified_time" content="2020-05-25T06:32:20.790Z">
+<meta property="article:modified_time" content="2020-05-26T01:52:29.231Z">
 <meta property="article:author" content="GH Chen">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/05/25/JavaStudyNote4/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200525141956.png">
@@ -171,10 +171,18 @@
 <h3 id="一、问题代码"><a href="#一、问题代码" class="headerlink" title="一、问题代码"></a>一、问题代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> x = sc.nextInt();</span><br><span class="line">    String nameOne = sc.nextLine();</span><br><span class="line">    String nameTwo = sc.nextLine();</span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">"----------------------"</span>);</span><br><span class="line">    System.out.println(x);</span><br><span class="line">    System.out.println(nameOne);</span><br><span class="line">    System.out.println(nameTwo);</span><br><span class="line"></span><br><span class="line">    sc.close(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="二、运行结果"><a href="#二、运行结果" class="headerlink" title="二、运行结果"></a>二、运行结果</h3><p><img src="/2020/05/25/JavaStudyNote4/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200525141956.png" alt></p>
-<h3 id="三、问题说明"><a href="#三、问题说明" class="headerlink" title="三、问题说明"></a>三、问题说明</h3><p>第一个sc.nextLine直接读取到了一个空字符串，而不是由键盘输入的。</p>
-<p><strong>此扫描器执行当前行，并返回跳过的输入信息。 此方法返回当前行的其余部分，不包括结尾处的行分隔符。当前位置移至下一行的行首。</strong><br><strong>因为此方法会继续在输入信息中查找行分隔符，所以如果没有行分隔符，它可能会缓冲所有输入信息，并查找要跳过的行。</strong></p>
-<p>根据官方API，nextLine会查找换行符之前的内容，而不会记录换行符作为信息，也就是在你输入一个整形并回车以后，nextLine直接就将换行符前面的信息读取进nameOne中了。而nextInt已经读取到信息并结束了，所以nextLine便只接受到一个空的字符串。</p>
-<h3 id="四、解决方法"><a href="#四、解决方法" class="headerlink" title="四、解决方法"></a>四、解决方法</h3><p>1.连续调用两次nextLine()。</p>
+<h3 id="三、问题说明"><a href="#三、问题说明" class="headerlink" title="三、问题说明"></a>三、问题说明</h3><p>第一个sc.nextLine直接读取到了一个空字符串，跳过了键盘输入。</p>
+<p><font color="red" size="4"><strong>nextLine()不要和其他next方法一起用！！！尤其nextLine()不要放在它们后面！！！</strong></font></p>
+<p><strong>nextLine()和next()的区别</strong></p>
+<p>　　nextLine（）方法返回的是Enter键之前的所有字符，它是可以得到带空格的字符串的。</p>
+<p>　　next（）会自动消去有效字符前的空格，只返回输入的字符，不能得到带空格的字符串。</p>
+<p><strong>关键</strong></p>
+<p>　　next（）在输入有效字符之后，将其后输入的空格键、Tab键或Enter键等视为分隔符或结束符。</p>
+<p>　　nextLine（）方法的结束符只是Enter键</p>
+<p><strong>所以</strong></p>
+<p>　　nextLine（）自动读取了被next（）去掉的Enter作为他的结束符，所以没办法从键盘输入值。</p>
+<p>　　经过验证，其他的next的方法，如nextDouble() ，nextFloat() ，nextInt() 等与nextLine（）连用时都存在这个问题。</p>
+<h3 id="四、解决方法"><a href="#四、解决方法" class="headerlink" title="四、解决方法"></a>四、解决方法</h3><p>1.在每一个 next（）、nextDouble() 、nextFloat()、nextInt() 等语句之后加一个nextLine（）语句，将被next（）去掉的Enter结束符过滤掉。</p>
 <p>2.改用next()，但会导致输入的内容第一个空格以后的内容丢失。</p>
 
       
