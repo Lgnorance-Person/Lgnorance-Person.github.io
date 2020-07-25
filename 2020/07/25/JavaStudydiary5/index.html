@@ -6,14 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Wonderland</title>
+  <title>Java学习日记（五）--- HashMap 异常调用（Suspicious call to ***） | Wonderland</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="世界上只有一种英雄主义就是在认清现实之后还依然热爱它I love this world">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wonderland">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+  <meta name="description" content="在使用HashMap的get方法的时候应避免出现两次强制转型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java学习日记（五）--- HashMap 异常调用（Suspicious call to ***）">
+<meta property="og:url" content="http://yoursite.com/2020/07/25/JavaStudydiary5/index.html">
 <meta property="og:site_name" content="Wonderland">
-<meta property="og:description" content="世界上只有一种英雄主义就是在认清现实之后还依然热爱它I love this world">
+<meta property="og:description" content="在使用HashMap的get方法的时候应避免出现两次强制转型">
+<meta property="article:published_time" content="2020-07-25T10:12:04.000Z">
+<meta property="article:modified_time" content="2020-07-25T10:53:32.351Z">
 <meta property="article:author" content="GH Chen">
 <meta name="twitter:card" content="summary">
   
@@ -141,160 +143,143 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-JavaStudydiary5" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java学习日记（五）--- HashMap 异常调用（Suspicious call to ***）
+    </h1>
+  
+
+        
+        <a href="/2020/07/25/JavaStudydiary5/" class="archive-article-date">
+  	<time datetime="2020-07-25T10:12:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-25</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="在使用HashMap的get方法的时候应避免出现两次强制转型"><a href="#在使用HashMap的get方法的时候应避免出现两次强制转型" class="headerlink" title="在使用HashMap的get方法的时候应避免出现两次强制转型"></a><strong>在使用HashMap的get方法的时候应避免出现两次强制转型</strong></h4><a id="more"></a>
+
+<h5 id="以下为有提示的代码，IDE在get方法处会提示Suspicious-call-to-‘HashMap-get’"><a href="#以下为有提示的代码，IDE在get方法处会提示Suspicious-call-to-‘HashMap-get’" class="headerlink" title="以下为有提示的代码，IDE在get方法处会提示Suspicious call to ‘HashMap.get’"></a><strong>以下为有提示的代码，IDE在get方法处会提示Suspicious call to ‘HashMap.get’</strong></h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;E&gt; <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">(ArrayList&lt;E&gt; list,HashMap&lt;Integer,String&gt; map)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (E index : list) &#123;</span><br><span class="line">        String value=map.get(index);</span><br><span class="line">        System.out.print(value+ <span class="string">" "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>网络上对相似问题的回答是</strong></p>
+<p><strong>To avoid downcasting twice.</strong></p>
+<p><strong>避免两次向下转型。</strong></p>
+<h5 id="以下为无提示代码，"><a href="#以下为无提示代码，" class="headerlink" title="以下为无提示代码，"></a>以下为无提示代码，</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;E&gt; <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">(ArrayList&lt;E&gt; list,HashMap&lt;Integer,String&gt; map)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (E index : list) &#123;</span><br><span class="line">        Integer num=(Integer) index;</span><br><span class="line">        String value=map.get(num);</span><br><span class="line">        System.out.print(value+ <span class="string">" "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>当我在get方法前将index强制类型转换成与HashMap的Key相同类型的num以后便没有提示了。</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/29/JavaProjectstart/" class="archive-article-date">
-  	<time datetime="2020-04-29T02:38:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/29/JavaProjectstart/">一个Java项目的启动</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/25/JavaStudydiary5/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/28/JavaStudydiary1/" class="archive-article-date">
-  	<time datetime="2020-04-28T10:15:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/23/JavaStudyNote5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HashMap之获取字符串中字符出现次数</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/28/JavaStudydiary1/">Java学习日记（一）</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/24/02/" class="archive-article-date">
-  	<time datetime="2020-02-24T03:29:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/24/02/">云服务器的安全策略优化</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/20/01/" class="archive-article-date">
-  	<time datetime="2020-02-20T12:35:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/20/01/">更换hexo主题和自定义主题</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/20/00/" class="archive-article-date">
-  	<time datetime="2020-02-20T04:01:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/20/00/">从零将hexo部署到云服务器上</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -318,8 +303,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
